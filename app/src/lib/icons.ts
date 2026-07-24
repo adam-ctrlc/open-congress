@@ -1,0 +1,29 @@
+export {
+	faLandmark,
+	faBuildingColumns,
+	faUsers,
+	faUserTie,
+	faFileLines,
+	faFilePdf,
+	faHashtag,
+	faScroll,
+	faMagnifyingGlass,
+	faChartColumn,
+	faTable,
+	faArrowDownWideShort,
+	faArrowRight,
+	faArrowLeftLong,
+	faArrowRightLong,
+	faChevronRight,
+	faCalendarDays,
+	faLocationDot,
+	faScaleBalanced,
+	faGavel,
+	faLayerGroup,
+	faUpRightFromSquare,
+	faCircleInfo,
+	faFolderOpen,
+	faTag
+} from '@fortawesome/free-solid-svg-icons';
+
+export { faGithub } from '@fortawesome/free-brands-svg-icons';
