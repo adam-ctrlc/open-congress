@@ -1,5 +1,8 @@
 # Open Congress (Philippines)
 
+**Live site: https://open-congress.vercel.app**
+&nbsp;·&nbsp; API gateway: https://open-congress-api.vercel.app
+
 A website for exploring Philippine legislative data (bills, senators, and representatives),
 styled after BetterGov.ph. It reads from the public
 [Open Congress API](https://open-congress-api.bettergov.ph).
@@ -9,9 +12,8 @@ the source.
 
 ## Structure
 
-- `api/` Rust gateway (Axum + SeaORM). Proxies and normalizes the upstream Open Congress API.
-  There is no database: requests are fetched live, so SeaORM is wired in as a placeholder
-  (`AppState.db` is `None`) for a future caching or persistence layer.
+- `api/` Rust gateway (Axum). Proxies the upstream Open Congress API and caches responses
+  in memory. There is no database: requests are fetched live.
 - `app/` SvelteKit 2 + Svelte 5 + Tailwind CSS v4 frontend. Talks to the `api/` gateway
   through server-side load functions.
 
@@ -46,6 +48,27 @@ Environment variable (optional):
 
 Then open http://localhost:5173.
 
+## Deployment
+
+Both parts run on Vercel in the Singapore region (`sin1`).
+
+| Part | URL | Notes |
+| --- | --- | --- |
+| App | https://open-congress.vercel.app | SvelteKit via `@sveltejs/adapter-vercel`, SSR retained |
+| API | https://open-congress-api.vercel.app | Rust via `vercel_runtime` on the official Rust runtime |
+
+The API reuses the same Axum router locally and on Vercel: `src/lib.rs` exposes `build_app()`,
+which `src/main.rs` serves with a TCP listener and `api/axum.rs` wraps in `VercelLayer` for the
+Vercel function. `vercel.json` rewrites every path to that single function.
+
+Deploy either part with `vercel deploy --prod` from `api/` or `app/`. The app reads
+`API_BASE_URL` (set in the Vercel project) to reach the gateway.
+
+Note: `vercel_runtime` is declared under `[target.'cfg(unix)'.dependencies]` because version
+2.4.0 does not compile on Windows (it uses `std::env` behind a `#[cfg(unix)]` import). Local
+Windows development builds the lib and the `governance-api` binary; the `axum` binary is built
+on Vercel's Linux images.
+
 ## API gateway routes
 
 All routes return the upstream JSON envelope (`{ success, data, pagination? }`).
@@ -61,6 +84,11 @@ All routes return the upstream JSON envelope (`{ success, data, pagination? }`).
 All routes forward query parameters upstream, so filters like `congress`, `type`, `scope`,
 `author_id`, `date_from` / `date_to`, `search`, `sort` / `dir`, `limit` / `offset` work as
 documented by the upstream API.
+
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, project layout,
+conventions, and the checks to run before opening a pull request.
 
 ## License
 

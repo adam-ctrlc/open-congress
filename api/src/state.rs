@@ -2,7 +2,6 @@ use std::time::Duration;
 
 use bytes::Bytes;
 use moka::future::Cache;
-use sea_orm::DatabaseConnection;
 
 pub type CachedResponse = (u16, Bytes);
 
@@ -11,8 +10,6 @@ pub struct AppState {
     pub http: reqwest::Client,
     pub upstream: String,
     pub cache: Cache<String, CachedResponse>,
-    #[allow(dead_code)]
-    pub db: Option<DatabaseConnection>,
 }
 
 impl AppState {
@@ -31,7 +28,6 @@ impl AppState {
             http,
             upstream,
             cache,
-            db: None,
         })
     }
 }
