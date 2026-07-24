@@ -30,8 +30,10 @@
 	}
 </script>
 
-<div class="h-1.5 w-full bg-gradient-to-r from-primary-600 via-secondary-500 to-success-500 sm:h-1"></div>
 <header class="sticky top-0 z-40 border-b border-gray-200 bg-white/90 backdrop-blur">
+	<div
+		class="h-1.5 w-full bg-gradient-to-r from-primary-600 via-secondary-500 to-success-500 sm:h-1"
+	></div>
 	<div
 		class="relative mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-3 sm:gap-4 sm:px-4"
 	>
