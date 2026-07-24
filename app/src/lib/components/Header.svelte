@@ -30,15 +30,17 @@
 	}
 </script>
 
-<div class="h-1 w-full bg-gradient-to-r from-primary-600 via-secondary-500 to-success-500"></div>
+<div class="h-1.5 w-full bg-gradient-to-r from-primary-600 via-secondary-500 to-success-500 sm:h-1"></div>
 <header class="sticky top-0 z-40 border-b border-gray-200 bg-white/90 backdrop-blur">
-	<div class="mx-auto flex h-16 max-w-6xl items-center gap-2 px-4 sm:gap-4">
-		<div class="shrink-0"><Logo /></div>
+	<div
+		class="relative mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-3 sm:gap-4 sm:px-4"
+	>
+		<div class="min-w-0 shrink"><Logo compact /></div>
 
 		<button
 			type="button"
 			onclick={() => (searchOpen = true)}
-			class="mx-auto hidden w-full max-w-md flex-1 cursor-pointer items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 py-2 pl-3 pr-2 text-left text-sm text-gray-400 transition-colors hover:border-gray-300 hover:bg-white md:flex"
+			class="absolute left-1/2 top-1/2 hidden w-full max-w-xs -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 py-2 pl-3 pr-2 text-left text-sm text-gray-400 transition-colors hover:border-gray-300 hover:bg-white md:flex lg:max-w-sm"
 		>
 			<Fa icon={faMagnifyingGlass} class="text-sm" />
 			<span class="flex-1">Search legislators or bills...</span>
@@ -47,25 +49,26 @@
 			</kbd>
 		</button>
 
-		<nav class="flex shrink-0 items-center gap-0.5 sm:gap-1 md:ml-0">
+		<nav class="flex shrink-0 items-center gap-0 sm:gap-1">
 			<button
 				type="button"
 				onclick={() => (searchOpen = true)}
 				aria-label="Search"
-				class="flex cursor-pointer items-center rounded-md px-2.5 py-2 text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 md:hidden"
+				class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 md:hidden"
 			>
 				<Fa icon={faMagnifyingGlass} class="text-sm" />
 			</button>
 			{#each links as link (link.href)}
 				<a
 					href={link.href}
-					class="flex items-center gap-2 rounded-md px-2.5 py-2 text-sm font-600 transition-colors sm:px-3 {isActive(
+					aria-label={link.label}
+					class="flex h-9 items-center justify-center gap-2 rounded-md px-2 text-sm font-600 transition-colors sm:px-2.5 lg:px-3 {isActive(
 						link.href
 					)
 						? 'bg-primary-50 text-primary-700'
 						: 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'}"
 				>
-					<Fa icon={link.icon} class="text-xs opacity-80" />
+					<Fa icon={link.icon} class="text-sm opacity-80 lg:text-xs" />
 					<span class="hidden lg:inline">{link.label}</span>
 				</a>
 			{/each}

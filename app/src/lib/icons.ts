@@ -10,6 +10,7 @@ export {
 	faMagnifyingGlass,
 	faChartColumn,
 	faTable,
+	faXmark,
 	faArrowDownWideShort,
 	faArrowRight,
 	faArrowLeftLong,

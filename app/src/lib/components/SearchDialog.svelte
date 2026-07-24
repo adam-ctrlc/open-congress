@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Fa from 'svelte-fa';
 	import { goto } from '$app/navigation';
-	import { faMagnifyingGlass, faUserTie, faFileLines, faArrowRight } from '$lib/icons';
+	import { faMagnifyingGlass, faUserTie, faFileLines, faArrowRight, faXmark } from '$lib/icons';
 	import { fullName } from '$lib/congress/format';
 	import type { DocumentSummary, Person } from '$lib/congress/types';
 
@@ -158,12 +158,12 @@
 	onclick={(event) => {
 		if (event.target === dialog) close();
 	}}
-	class="fixed left-1/2 top-[12vh] w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 rounded-xl border border-gray-200 bg-white p-0 shadow-2xl backdrop:bg-gray-900/40 backdrop:backdrop-blur-sm"
+	class="fixed left-1/2 top-2 w-[calc(100%-1rem)] max-w-xl -translate-x-1/2 rounded-xl border border-gray-200 bg-white p-0 shadow-2xl backdrop:bg-gray-900/40 backdrop:backdrop-blur-sm sm:top-[12vh] sm:w-[calc(100%-2rem)]"
 >
 	<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 	<div role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-controls="search-results">
-		<div class="flex items-center gap-3 border-b border-gray-100 px-4">
-			<Fa icon={faMagnifyingGlass} class="text-gray-400" />
+		<div class="flex items-center gap-2 border-b border-gray-100 px-3 sm:gap-3 sm:px-4">
+			<Fa icon={faMagnifyingGlass} class="shrink-0 text-gray-400" />
 			<input
 				bind:this={input}
 				value={query}
@@ -173,14 +173,26 @@
 				placeholder="Search legislators or bills..."
 				aria-label="Search legislators or bills"
 				autocomplete="off"
-				class="w-full border-0 py-4 text-base text-gray-900 placeholder:text-gray-400 focus:ring-0"
+				class="w-full min-w-0 border-0 py-3.5 text-base text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:py-4"
 			/>
 			<kbd class="hidden shrink-0 rounded border border-gray-200 px-1.5 py-0.5 text-xs text-gray-400 sm:block">
 				Esc
 			</kbd>
+			<button
+				type="button"
+				onclick={close}
+				aria-label="Close search"
+				class="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-md text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 sm:hidden"
+			>
+				<Fa icon={faXmark} />
+			</button>
 		</div>
 
-		<div id="search-results" role="listbox" class="max-h-80 overflow-y-auto p-2">
+		<div
+			id="search-results"
+			role="listbox"
+			class="max-h-[55vh] overflow-y-auto p-2 sm:max-h-80"
+		>
 			{#if loading && items.length === 0}
 				<div class="space-y-2 p-2">
 					{#each Array(4) as _, i (i)}
@@ -248,18 +260,21 @@
 		</div>
 
 		<div
-			class="flex items-center justify-between gap-4 border-t border-gray-100 px-4 py-2.5 text-xs text-gray-400"
+			class="flex items-center justify-between gap-4 border-t border-gray-100 px-3 py-2.5 text-xs text-gray-400 sm:px-4"
 		>
-			<span class="flex items-center gap-3">
+			<span class="hidden items-center gap-3 sm:flex">
 				<span class="flex items-center gap-1">
 					<kbd class="rounded border border-gray-200 px-1.5 py-0.5">up</kbd>
 					<kbd class="rounded border border-gray-200 px-1.5 py-0.5">down</kbd>
 					to navigate
 				</span>
-				<span class="hidden items-center gap-1 sm:flex">
+				<span class="flex items-center gap-1">
 					<kbd class="rounded border border-gray-200 px-1.5 py-0.5">Enter</kbd>
 					to open
 				</span>
+			</span>
+			<span class="sm:hidden">
+				{#if items.length > 0}{items.length} result{items.length === 1 ? '' : 's'}{/if}
 			</span>
 			{#if query.trim()}
 				<a
