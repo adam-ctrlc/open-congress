@@ -158,7 +158,7 @@
 	onclick={(event) => {
 		if (event.target === dialog) close();
 	}}
-	class="fixed left-1/2 top-2 w-[calc(100%-1rem)] max-w-xl -translate-x-1/2 rounded-xl border border-gray-200 bg-surface p-0 shadow-2xl backdrop:bg-gray-900/40 backdrop:backdrop-blur-sm sm:top-[12vh] sm:w-[calc(100%-2rem)]"
+	class="fixed left-1/2 top-2 w-[calc(100%-1rem)] max-w-xl -translate-x-1/2 rounded-xl border border-gray-200 bg-surface p-0 shadow-2xl backdrop:bg-black/50 backdrop:backdrop-blur-sm sm:top-[12vh] sm:w-[calc(100%-2rem)]"
 >
 	<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 	<div role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-controls="search-results">
@@ -173,7 +173,7 @@
 				placeholder="Search legislators or bills..."
 				aria-label="Search legislators or bills"
 				autocomplete="off"
-				class="w-full min-w-0 border-0 py-3.5 text-base text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:py-4"
+				class="w-full min-w-0 border-0 bg-transparent py-3.5 text-base text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:py-4"
 			/>
 			<kbd class="hidden shrink-0 rounded border border-gray-200 px-1.5 py-0.5 text-xs text-gray-400 sm:block">
 				Esc
