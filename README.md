@@ -32,6 +32,8 @@ Environment variables (all optional):
 - `BIND_ADDR` address to bind (default `127.0.0.1:8080`)
 - `UPSTREAM_BASE` upstream base URL (default `https://open-congress-api.bettergov.ph/api`)
 - `CACHE_TTL_SECS` in-memory response cache TTL in seconds (default `300`)
+- `ALLOWED_ORIGINS` comma-separated CORS allowlist (default
+  `https://open-congress.vercel.app,http://localhost:5173`). Use `*` to allow any origin.
 
 Responses are cached in-memory (moka) keyed by upstream URL; each response carries an
 `x-cache: HIT|MISS` header. There is no database.

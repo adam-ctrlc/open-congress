@@ -5,8 +5,8 @@ mod state;
 mod upstream;
 
 use axum::Router;
-use axum::http::Method;
-use tower_http::cors::{Any, CorsLayer};
+use axum::http::{HeaderValue, Method};
+use tower_http::cors::{AllowOrigin, Any, CorsLayer};
 use tower_http::trace::TraceLayer;
 use tracing_subscriber::EnvFilter;
 
@@ -22,13 +22,34 @@ pub fn init_tracing() {
         .try_init();
 }
 
+/// `ALLOWED_ORIGINS="*"` opens the API to any origin; otherwise only the listed
+/// origins may call it from a browser.
+fn allowed_origins(origins: &[String]) -> AllowOrigin {
+    if origins.iter().any(|origin| origin == "*") {
+        return AllowOrigin::from(Any);
+    }
+
+    let list: Vec<HeaderValue> = origins
+        .iter()
+        .filter_map(|origin| match origin.parse::<HeaderValue>() {
+            Ok(value) => Some(value),
+            Err(_) => {
+                tracing::warn!(%origin, "ignoring invalid entry in ALLOWED_ORIGINS");
+                None
+            }
+        })
+        .collect();
+
+    AllowOrigin::list(list)
+}
+
 pub fn build_app() -> anyhow::Result<Router> {
     let config = Config::from_env();
     let state = AppState::new(config.upstream.clone(), config.cache_ttl_secs)?;
 
     let cors = CorsLayer::new()
         .allow_methods([Method::GET])
-        .allow_origin(Any);
+        .allow_origin(allowed_origins(&config.allowed_origins));
 
     Ok(routes::router(state)
         .layer(cors)

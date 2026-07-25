@@ -4,7 +4,10 @@ pub struct Config {
     pub bind: String,
     pub upstream: String,
     pub cache_ttl_secs: u64,
+    pub allowed_origins: Vec<String>,
 }
+
+const DEFAULT_ORIGINS: &str = "https://open-congress.vercel.app,http://localhost:5173";
 
 impl Config {
     pub fn from_env() -> Self {
@@ -16,6 +19,13 @@ impl Config {
                 .ok()
                 .and_then(|value| value.parse().ok())
                 .unwrap_or(300),
+            allowed_origins: env::var("ALLOWED_ORIGINS")
+                .unwrap_or_else(|_| DEFAULT_ORIGINS.into())
+                .split(',')
+                .map(str::trim)
+                .filter(|origin| !origin.is_empty())
+                .map(str::to_owned)
+                .collect(),
         }
     }
 }
