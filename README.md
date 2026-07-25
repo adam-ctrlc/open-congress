@@ -92,9 +92,18 @@ documented by the upstream API.
 Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, project layout,
 conventions, and the checks to run before opening a pull request.
 
+## Credits
+
+All legislative data comes from the [Open Congress API](https://open-congress-api.bettergov.ph),
+built and maintained by [BetterGov.ph](https://bettergov.ph)
+([github.com/bettergovph](https://github.com/bettergovph)) — a volunteer-run civic technology
+project making Philippine government data accessible. This site is a frontend over their work;
+the data collection and the API are theirs.
+
 ## License
 
 Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE).
 
 Data comes from the Open Congress API by BetterGov.ph and is public domain unless otherwise
-noted by the source. This project is independent and not affiliated with any government agency.
+noted by the source. This project is independent, is not affiliated with or endorsed by
+BetterGov.ph, and is not affiliated with any government agency.

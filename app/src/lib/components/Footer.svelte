@@ -41,6 +41,18 @@
 						rel="noreferrer">BetterGov.ph <Fa icon={faUpRightFromSquare} class="text-[0.6rem]" /></a
 					>
 				</li>
+				<li>
+					<a
+						class="inline-flex items-center gap-2 hover:text-primary-700 dark:hover:text-primary-200"
+						href="https://github.com/bettergovph"
+						target="_blank"
+						rel="noreferrer"
+					>
+						<Fa icon={faGithub} />
+						bettergovph
+						<Fa icon={faUpRightFromSquare} class="text-[0.6rem]" />
+					</a>
+				</li>
 			</ul>
 		</div>
 		<div>
