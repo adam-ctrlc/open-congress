@@ -2,9 +2,17 @@
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/forms';
 
+/* Manual override wins; the no-flash script in app.html applies .dark from
+   localStorage or prefers-color-scheme before first paint. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
 	--font-sans:
 		'Figtree', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+	/* Raised surface (cards, header, inputs). Flipped in dark mode so components
+	   never need a dark: variant for their background. */
+	--color-surface: #ffffff;
 
 	--color-primary-50: #e6f0fd;
 	--color-primary-100: #cce0fb;
@@ -40,8 +48,39 @@
 	--color-success-900: #002313;
 }
 
+/* Dark mode re-steps the neutral ramp instead of restyling every component:
+   surfaces get darker as the number goes down, ink gets lighter as it goes up,
+   so existing text-gray-*, border-gray-* and bg-gray-* utilities invert. */
+.dark {
+	--color-surface: #151b28;
+
+	--color-gray-50: #0b0f19;
+	--color-gray-100: #1b2233;
+	--color-gray-200: #2b3446;
+	--color-gray-300: #3d4859;
+	--color-gray-400: #7c8698;
+	--color-gray-500: #9aa4b2;
+	--color-gray-600: #c2c9d4;
+	--color-gray-700: #d8dde5;
+	--color-gray-800: #e9ecf1;
+	--color-gray-900: #f5f7fa;
+	--color-gray-950: #ffffff;
+
+	/* Only the tint steps used as chip/avatar backgrounds flip. Steps 200 and up
+	   stay light so accent text and rings remain legible on dark surfaces, and
+	   solid fills (buttons, the hero gradient) keep their intended colour. */
+	--color-primary-50: #12233d;
+	--color-primary-100: #172c4c;
+	--color-secondary-50: #2c1509;
+	--color-success-50: #072c1b;
+}
+
 html {
 	scroll-behavior: smooth;
+}
+
+html.dark {
+	color-scheme: dark;
 }
 
 @keyframes progress-indeterminate {

@@ -12,15 +12,15 @@
 
 <a
 	href="/people/{person.id}"
-	class="group flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all hover:border-primary-300 hover:shadow-md"
+	class="group flex min-w-0 items-center gap-4 rounded-xl border border-gray-200 bg-surface p-4 shadow-sm transition-all hover:border-primary-300 hover:shadow-md"
 >
 	<span
-		class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-100 text-base font-700 text-primary-700"
+		class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-100 text-base font-700 text-primary-700 dark:text-primary-300"
 	>
 		{initials(person)}
 	</span>
 	<div class="min-w-0 flex-1">
-		<div class="truncate font-700 text-gray-900 group-hover:text-primary-700">
+		<div class="truncate font-700 text-gray-900 group-hover:text-primary-700 dark:group-hover:text-primary-200">
 			{fullName(person)}
 		</div>
 		<div class="mt-1 flex flex-wrap gap-1.5">
@@ -34,6 +34,6 @@
 	</div>
 	<Fa
 		icon={faChevronRight}
-		class="text-gray-300 transition-colors group-hover:text-primary-500"
+		class="shrink-0 text-gray-300 transition-colors group-hover:text-primary-500"
 	/>
 </a>

@@ -27,16 +27,16 @@
 	<title>{item.ordinal} Congress | Open Congress</title>
 </svelte:head>
 
-<div class="border-b border-gray-200 bg-white">
+<div class="border-b border-gray-200 bg-surface">
 	<div class="mx-auto max-w-5xl px-4 py-10">
 		<a
 			href="/congresses"
-			class="mb-6 inline-flex items-center gap-2 text-sm font-600 text-gray-500 hover:text-primary-700"
+			class="mb-6 inline-flex items-center gap-2 text-sm font-600 text-gray-500 hover:text-primary-700 dark:hover:text-primary-200"
 		>
 			<Fa icon={faArrowLeftLong} /> All congresses
 		</a>
 		<div class="flex flex-wrap items-center gap-3">
-			<span class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
+			<span class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary-50 text-primary-600 dark:text-primary-300">
 				<Fa icon={faBuildingColumns} class="text-2xl" />
 			</span>
 			<div>
@@ -67,7 +67,7 @@
 
 <div class="mx-auto max-w-5xl px-4 py-10">
 	<h2 class="mb-4 flex items-center gap-2 text-lg font-700 text-gray-900">
-		<Fa icon={faFileLines} class="text-primary-600" /> Bills filed
+		<Fa icon={faFileLines} class="text-primary-600 dark:text-primary-300" /> Bills filed
 	</h2>
 
 	<div class="mb-6">

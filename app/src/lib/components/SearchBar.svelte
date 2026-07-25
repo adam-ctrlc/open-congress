@@ -20,7 +20,7 @@
 		{value}
 		{placeholder}
 		autocomplete="off"
-		class="w-full rounded-xl border-gray-200 bg-white pl-11 pr-28 text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-primary-500 focus:ring-primary-500 {large
+		class="w-full rounded-xl border-gray-200 bg-surface pl-11 pr-28 text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-primary-500 focus:ring-primary-500 {large
 			? 'py-4 text-lg'
 			: 'py-2.5'}"
 	/>

@@ -48,7 +48,7 @@
 		{#if current > 1}
 			<a
 				href={pageUrl(current - 1)}
-				class="flex h-9 items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 text-sm font-600 text-gray-600 transition-colors hover:border-primary-300 hover:text-primary-700"
+				class="flex h-9 items-center gap-1.5 rounded-lg border border-gray-200 bg-surface px-3 text-sm font-600 text-gray-600 transition-colors hover:border-primary-300 hover:text-primary-700 dark:hover:text-primary-200"
 				aria-label="Previous page"
 			>
 				<Fa icon={faArrowLeftLong} class="text-xs" />
@@ -69,7 +69,7 @@
 			{:else}
 				<a
 					href={pageUrl(item)}
-					class="flex h-9 min-w-9 items-center justify-center rounded-lg border border-gray-200 bg-white px-2 text-sm font-600 text-gray-700 transition-colors hover:border-primary-300 hover:text-primary-700"
+					class="flex h-9 min-w-9 items-center justify-center rounded-lg border border-gray-200 bg-surface px-2 text-sm font-600 text-gray-700 transition-colors hover:border-primary-300 hover:text-primary-700 dark:hover:text-primary-200"
 				>
 					{item}
 				</a>
@@ -79,7 +79,7 @@
 		{#if current < totalPages}
 			<a
 				href={pageUrl(current + 1)}
-				class="flex h-9 items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 text-sm font-600 text-gray-600 transition-colors hover:border-primary-300 hover:text-primary-700"
+				class="flex h-9 items-center gap-1.5 rounded-lg border border-gray-200 bg-surface px-3 text-sm font-600 text-gray-600 transition-colors hover:border-primary-300 hover:text-primary-700 dark:hover:text-primary-200"
 				aria-label="Next page"
 			>
 				<span class="hidden sm:inline">Next</span>

@@ -13,7 +13,7 @@
 
 <a
 	href="/documents/{document.id}"
-	class="group block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:border-primary-300 hover:shadow-md"
+	class="group block min-w-0 rounded-xl border border-gray-200 bg-surface p-5 shadow-sm transition-all hover:border-primary-300 hover:shadow-md"
 >
 	<div class="mb-2 flex flex-wrap items-center gap-1.5">
 		<Badge tone={chamberTone}>{document.name}</Badge>
@@ -21,7 +21,7 @@
 			<Badge tone="neutral">{document.congress}th Congress</Badge>
 		{/if}
 	</div>
-	<h3 class="line-clamp-2 font-700 text-gray-900 group-hover:text-primary-700">
+	<h3 class="line-clamp-2 font-700 text-gray-900 group-hover:text-primary-700 dark:group-hover:text-primary-200">
 		{heading}
 	</h3>
 	{#if document.long_title}

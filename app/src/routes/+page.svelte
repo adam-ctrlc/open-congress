@@ -48,22 +48,23 @@
 </svelte:head>
 
 <section
-	class="relative overflow-hidden bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800"
+	class="relative overflow-hidden bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 dark:from-primary-900 dark:via-[#071a33] dark:to-gray-50"
 >
-	<div class="absolute inset-0 opacity-10">
+	<div class="absolute inset-0 opacity-10 dark:opacity-20">
 		<div class="absolute -right-16 -top-16 h-72 w-72 rounded-full bg-secondary-500 blur-3xl"></div>
 		<div class="absolute -bottom-16 -left-16 h-72 w-72 rounded-full bg-success-500 blur-3xl"></div>
 	</div>
+	<div class="absolute inset-x-0 bottom-0 hidden h-px bg-gray-200 dark:block"></div>
 	<div class="relative mx-auto max-w-4xl px-4 py-16 text-center sm:py-20">
 		<span
-			class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-sm font-500 text-primary-50 ring-1 ring-inset ring-white/20"
+			class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-sm font-500 text-primary-50 dark:text-gray-600 ring-1 ring-inset ring-white/20"
 		>
 			<Fa icon={faScaleBalanced} /> Philippine Legislative Data
 		</span>
 		<h1 class="text-4xl font-800 tracking-tight text-white sm:text-5xl">
 			Explore the work of Congress
 		</h1>
-		<p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+		<p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100 dark:text-gray-700">
 			Search bills, senators, and representatives across every Congress of the Philippines: open,
 			searchable, and free.
 		</p>
@@ -103,7 +104,7 @@
 		</section>
 	{:else}
 		<section
-			class="mt-10 rounded-xl border border-secondary-200 bg-secondary-50 p-5 text-sm text-secondary-800"
+			class="mt-10 rounded-xl border border-secondary-200 bg-secondary-50 p-5 text-sm text-secondary-800 dark:text-secondary-200"
 		>
 			Live statistics are unavailable. Make sure the API gateway is running on its configured port.
 		</section>
@@ -115,7 +116,7 @@
 			{#if data.stats && data.stats.bills_by_congress?.length}
 				<a
 					href="#charts"
-					class="inline-flex items-center gap-2 text-sm font-600 text-primary-600 hover:text-primary-700"
+					class="inline-flex items-center gap-2 text-sm font-600 text-primary-600 dark:text-primary-300 hover:text-primary-700 dark:hover:text-primary-200"
 				>
 					<Fa icon={faChartColumn} />
 					See the charts
@@ -126,18 +127,18 @@
 			{#each sections as section (section.href)}
 				<a
 					href={section.href}
-					class="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:border-primary-300 hover:shadow-md"
+					class="group rounded-2xl border border-gray-200 bg-surface p-6 shadow-sm transition-all hover:border-primary-300 hover:shadow-md"
 				>
 					<span
-						class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary-600"
+						class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary-600 dark:text-primary-300"
 					>
 						<Fa icon={section.icon} class="text-xl" />
 					</span>
-					<h3 class="mt-4 text-lg font-700 text-gray-900 group-hover:text-primary-700">
+					<h3 class="mt-4 text-lg font-700 text-gray-900 group-hover:text-primary-700 dark:group-hover:text-primary-200">
 						{section.title}
 					</h3>
 					<p class="mt-1 text-sm text-gray-500">{section.desc}</p>
-					<span class="mt-4 inline-flex items-center gap-2 text-sm font-600 text-primary-600">
+					<span class="mt-4 inline-flex items-center gap-2 text-sm font-600 text-primary-600 dark:text-primary-300">
 						Explore
 						<Fa icon={faArrowRight} class="transition-transform group-hover:translate-x-1" />
 					</span>

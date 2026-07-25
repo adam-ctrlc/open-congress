@@ -62,7 +62,7 @@
 	}
 </script>
 
-<figure class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+<figure class="rounded-xl border border-gray-200 bg-surface p-5 shadow-sm">
 	<figcaption class="mb-1 text-lg font-700 text-gray-900">Bills filed per Congress</figcaption>
 	<p class="mb-4 text-sm text-gray-500">
 		House and Senate bills recorded for each Congress in the dataset.
@@ -90,10 +90,10 @@
 					x2={W - PAD.right}
 					y1={y(tick)}
 					y2={y(tick)}
-					stroke="#e5e7eb"
+					stroke="currentColor" class="text-gray-200"
 					stroke-width="1"
 				/>
-				<text x={PAD.left - 10} y={y(tick) + 4} text-anchor="end" font-size="11" fill="#9ca3af">
+				<text x={PAD.left - 10} y={y(tick) + 4} text-anchor="end" font-size="11" fill="currentColor" class="text-gray-400">
 					{tick >= 1000 ? `${Math.round(tick / 1000)}k` : tick}
 				</text>
 			{/each}
@@ -111,7 +111,8 @@
 						y={PAD.top}
 						width={band}
 						height={INNER_H}
-						fill={hovered === i ? '#f3f4f6' : 'transparent'}
+						fill="currentColor"
+					class={hovered === i ? 'text-gray-100' : 'text-transparent'}
 					/>
 					{#each segments(row) as segment (segment.key)}
 						{#if segment.rounded}
@@ -129,7 +130,7 @@
 							/>
 						{/if}
 					{/each}
-					<text x={cx} y={H - PAD.bottom + 18} text-anchor="middle" font-size="11" fill="#6b7280">
+					<text x={cx} y={H - PAD.bottom + 18} text-anchor="middle" font-size="11" fill="currentColor" class="text-gray-500">
 						{row.congress}
 					</text>
 				</g>
@@ -140,7 +141,7 @@
 				y={H - 6}
 				text-anchor="middle"
 				font-size="11"
-				fill="#9ca3af"
+				fill="currentColor" class="text-gray-400"
 			>
 				Congress
 			</text>
@@ -149,7 +150,7 @@
 		{#if hovered !== null}
 			{@const row = data[hovered]}
 			<div
-				class="pointer-events-none absolute top-2 z-10 w-max rounded-lg border border-gray-200 bg-white p-3 text-sm shadow-lg"
+				class="pointer-events-none absolute top-2 z-10 w-max rounded-lg border border-gray-200 bg-surface p-3 text-sm shadow-lg"
 				style="left: {(bandCenter(hovered) / W) * 100}%; transform: translateX(-50%)"
 			>
 				<div class="mb-1.5 font-700 text-gray-900">{row.congress}th Congress</div>
@@ -172,7 +173,7 @@
 
 	<details class="group mt-5 border-t border-gray-100 pt-4">
 		<summary
-			class="inline-flex cursor-pointer list-none items-center gap-2 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-600 text-gray-700 transition-colors hover:border-primary-300 hover:text-primary-700 group-open:border-primary-300 group-open:bg-primary-50 group-open:text-primary-700 [&::-webkit-details-marker]:hidden"
+			class="inline-flex cursor-pointer list-none items-center gap-2 rounded-lg border border-gray-200 bg-surface px-3 py-2 text-sm font-600 text-gray-700 transition-colors hover:border-primary-300 hover:text-primary-700 dark:hover:text-primary-200 group-open:border-primary-300 group-open:bg-primary-50 group-open:text-primary-700 dark:group-open:text-primary-200 [&::-webkit-details-marker]:hidden"
 		>
 			<Fa icon={faTable} class="text-gray-400 group-open:text-primary-500" />
 			<span class="group-open:hidden">View as table</span>

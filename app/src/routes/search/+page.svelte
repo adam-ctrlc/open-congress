@@ -38,13 +38,13 @@
 		<section class="mb-12">
 			<div class="mb-4 flex items-center justify-between">
 				<h2 class="flex items-center gap-2 text-xl font-700 text-gray-900">
-					<Fa icon={faUserTie} class="text-primary-600" /> Legislators
+					<Fa icon={faUserTie} class="text-primary-600 dark:text-primary-300" /> Legislators
 				</h2>
 				{#await data.people then people}
 					{#if people.total > 0}
 						<a
 							href="/people?q={encodeURIComponent(data.q)}"
-							class="inline-flex items-center gap-1.5 text-sm font-600 text-primary-600 hover:text-primary-700"
+							class="inline-flex items-center gap-1.5 text-sm font-600 text-primary-600 dark:text-primary-300 hover:text-primary-700 dark:hover:text-primary-200"
 						>
 							See all {formatNumber(people.total)} <Fa icon={faArrowRight} class="text-xs" />
 						</a>
@@ -78,13 +78,13 @@
 		<section>
 			<div class="mb-4 flex items-center justify-between">
 				<h2 class="flex items-center gap-2 text-xl font-700 text-gray-900">
-					<Fa icon={faFileLines} class="text-primary-600" /> Bills
+					<Fa icon={faFileLines} class="text-primary-600 dark:text-primary-300" /> Bills
 				</h2>
 				{#await data.documents then documents}
 					{#if documents.total > 0}
 						<a
 							href="/documents?q={encodeURIComponent(data.q)}"
-							class="inline-flex items-center gap-1.5 text-sm font-600 text-primary-600 hover:text-primary-700"
+							class="inline-flex items-center gap-1.5 text-sm font-600 text-primary-600 dark:text-primary-300 hover:text-primary-700 dark:hover:text-primary-200"
 						>
 							See all {formatNumber(documents.total)} <Fa icon={faArrowRight} class="text-xs" />
 						</a>

@@ -32,11 +32,11 @@
 	<title>{doc.name} | Open Congress</title>
 </svelte:head>
 
-<div class="border-b border-gray-200 bg-white">
+<div class="border-b border-gray-200 bg-surface">
 	<div class="mx-auto max-w-5xl px-4 py-10">
 		<a
 			href="/documents"
-			class="mb-6 inline-flex items-center gap-2 text-sm font-600 text-gray-500 hover:text-primary-700"
+			class="mb-6 inline-flex items-center gap-2 text-sm font-600 text-gray-500 hover:text-primary-700 dark:hover:text-primary-200"
 		>
 			<Fa icon={faArrowLeftLong} /> All bills
 		</a>
@@ -78,7 +78,7 @@
 
 			<section class="mb-8">
 				<h2 class="mb-3 flex items-center gap-2 text-lg font-700 text-gray-900">
-					<Fa icon={faUsers} class="text-primary-600" /> Authors
+					<Fa icon={faUsers} class="text-primary-600 dark:text-primary-300" /> Authors
 				</h2>
 				{#await data.authors}
 					<div class="grid gap-3 sm:grid-cols-2">
@@ -92,7 +92,7 @@
 							{#each authors as author (author.id)}
 								<a
 									href="/people/{author.id}"
-									class="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-sm font-600 text-gray-700 transition-colors hover:border-primary-300 hover:text-primary-700"
+									class="rounded-full border border-gray-200 bg-surface px-3 py-1.5 text-sm font-600 text-gray-700 transition-colors hover:border-primary-300 hover:text-primary-700 dark:hover:text-primary-200"
 								>
 									{fullName(author)}
 								</a>
@@ -112,7 +112,7 @@
 
 			<section>
 				<h2 class="mb-3 flex items-center gap-2 text-lg font-700 text-gray-900">
-					<Fa icon={faTag} class="text-primary-600" /> Subjects
+					<Fa icon={faTag} class="text-primary-600 dark:text-primary-300" /> Subjects
 				</h2>
 				{#if doc.subjects.length > 0}
 					<div class="flex flex-wrap gap-2">
@@ -131,7 +131,7 @@
 		</div>
 
 		<aside class="lg:sticky lg:top-24 lg:col-span-1 lg:self-start">
-			<div class="rounded-xl border border-gray-200 bg-white p-5">
+			<div class="rounded-xl border border-gray-200 bg-surface p-5">
 				<h2 class="mb-4 text-sm font-700 uppercase tracking-wide text-gray-500">Bill details</h2>
 				<dl class="space-y-4">
 					<div class="flex items-start gap-3">
@@ -179,7 +179,7 @@
 									href={source}
 									target="_blank"
 									rel="noreferrer"
-									class="flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-600 text-gray-700 transition-colors hover:border-primary-300 hover:text-primary-700"
+									class="flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-600 text-gray-700 transition-colors hover:border-primary-300 hover:text-primary-700 dark:hover:text-primary-200"
 								>
 									<Fa icon={faFilePdf} class="text-gray-400" />
 									{doc.download_url_sources.length > 1 ? `Document ${i + 1}` : 'Download document'}

@@ -21,10 +21,10 @@
 	/>
 </svelte:head>
 
-<div class="border-b border-gray-200 bg-white">
+<div class="border-b border-gray-200 bg-surface">
 	<div class="mx-auto max-w-6xl px-4 py-10">
 		<div class="flex flex-wrap items-center gap-3">
-			<span class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
+			<span class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary-50 text-primary-600 dark:text-primary-300">
 				<Fa icon={faUserTie} class="text-2xl" />
 			</span>
 			<div>
@@ -51,7 +51,7 @@
 				This Congress also has {formatNumber(current.total_representatives)} representatives.
 				<a
 					href="/people?type=representative&congress={current.congress_number}"
-					class="inline-flex items-center gap-1.5 font-600 text-primary-600 hover:text-primary-700"
+					class="inline-flex items-center gap-1.5 font-600 text-primary-600 dark:text-primary-300 hover:text-primary-700 dark:hover:text-primary-200"
 				>
 					Browse them <Fa icon={faArrowRight} class="text-xs" />
 				</a>

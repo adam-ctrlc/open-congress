@@ -18,7 +18,7 @@
 			Open Congress
 		</span>
 		<span
-			class="{compact ? 'hidden sm:block' : 'block'} text-xs font-500 {subtle
+			class="{compact ? 'hidden xl:block' : 'block'} truncate text-xs font-500 {subtle
 				? 'text-primary-100'
 				: 'text-gray-500'}"
 		>

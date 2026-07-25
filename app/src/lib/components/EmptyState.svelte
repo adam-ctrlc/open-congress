@@ -12,7 +12,7 @@
 </script>
 
 <div
-	class="rounded-xl border border-dashed border-gray-300 bg-white text-center {compact
+	class="rounded-xl border border-dashed border-gray-300 bg-surface text-center {compact
 		? 'p-6'
 		: 'p-12'}"
 >

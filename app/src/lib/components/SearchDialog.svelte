@@ -158,7 +158,7 @@
 	onclick={(event) => {
 		if (event.target === dialog) close();
 	}}
-	class="fixed left-1/2 top-2 w-[calc(100%-1rem)] max-w-xl -translate-x-1/2 rounded-xl border border-gray-200 bg-white p-0 shadow-2xl backdrop:bg-gray-900/40 backdrop:backdrop-blur-sm sm:top-[12vh] sm:w-[calc(100%-2rem)]"
+	class="fixed left-1/2 top-2 w-[calc(100%-1rem)] max-w-xl -translate-x-1/2 rounded-xl border border-gray-200 bg-surface p-0 shadow-2xl backdrop:bg-gray-900/40 backdrop:backdrop-blur-sm sm:top-[12vh] sm:w-[calc(100%-2rem)]"
 >
 	<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 	<div role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-controls="search-results">
@@ -219,7 +219,7 @@
 								<a
 									href="{group.href}?q={encodeURIComponent(query)}"
 									onclick={close}
-									class="text-xs font-600 text-primary-600 hover:text-primary-700"
+									class="text-xs font-600 text-primary-600 dark:text-primary-300 hover:text-primary-700 dark:hover:text-primary-200"
 								>
 									See all {group.total}
 								</a>
@@ -240,7 +240,7 @@
 							>
 								<span
 									class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg {index === active
-										? 'bg-primary-100 text-primary-600'
+										? 'bg-primary-100 text-primary-600 dark:text-primary-300'
 										: 'bg-gray-100 text-gray-400'}"
 								>
 									<Fa icon={group.icon} class="text-sm" />
@@ -280,7 +280,7 @@
 				<a
 					href="/search?q={encodeURIComponent(query)}"
 					onclick={close}
-					class="font-600 text-primary-600 hover:text-primary-700"
+					class="font-600 text-primary-600 dark:text-primary-300 hover:text-primary-700 dark:hover:text-primary-200"
 				>
 					All results
 				</a>

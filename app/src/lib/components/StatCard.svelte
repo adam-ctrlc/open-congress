@@ -12,13 +12,13 @@
 	}: { icon: IconDefinition; label: string; value: string; tone?: Tone } = $props();
 
 	const tones: Record<Tone, string> = {
-		primary: 'bg-primary-50 text-primary-600',
-		secondary: 'bg-secondary-50 text-secondary-600',
-		success: 'bg-success-50 text-success-600'
+		primary: 'bg-primary-50 text-primary-600 dark:text-primary-300',
+		secondary: 'bg-secondary-50 text-secondary-600 dark:text-secondary-300',
+		success: 'bg-success-50 text-success-600 dark:text-success-300'
 	};
 </script>
 
-<div class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+<div class="rounded-xl border border-gray-200 bg-surface p-5 shadow-sm">
 	<div class="flex items-center gap-3">
 		<span class="flex h-11 w-11 items-center justify-center rounded-lg {tones[tone]}">
 			<Fa icon={icon} class="text-lg" />

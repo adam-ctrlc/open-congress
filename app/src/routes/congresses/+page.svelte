@@ -22,17 +22,17 @@
 		{#each data.congresses as item (item.id)}
 			<a
 				href="/congresses/{item.id}"
-				class="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:border-primary-300 hover:shadow-md"
+				class="group rounded-xl border border-gray-200 bg-surface p-5 shadow-sm transition-all hover:border-primary-300 hover:shadow-md"
 			>
 				<div class="flex items-center justify-between">
-					<span class="flex h-11 w-11 items-center justify-center rounded-lg bg-primary-50 text-primary-600">
+					<span class="flex h-11 w-11 items-center justify-center rounded-lg bg-primary-50 text-primary-600 dark:text-primary-300">
 						<Fa icon={faBuildingColumns} class="text-lg" />
 					</span>
 					{#if item.end_date == null}
 						<Badge tone="success">Current</Badge>
 					{/if}
 				</div>
-				<h2 class="mt-4 text-lg font-700 text-gray-900 group-hover:text-primary-700">
+				<h2 class="mt-4 text-lg font-700 text-gray-900 group-hover:text-primary-700 dark:group-hover:text-primary-200">
 					{item.ordinal} Congress
 				</h2>
 				<div class="mt-2 flex items-center gap-1.5 text-sm text-gray-500">

@@ -51,7 +51,7 @@
 				value={q}
 				placeholder={searchPlaceholder}
 				autocomplete="off"
-				class="w-full rounded-lg border-gray-200 bg-white py-2.5 pl-9 text-sm text-gray-900 placeholder:text-gray-400 focus:border-primary-500 focus:ring-primary-500"
+				class="w-full rounded-lg border-gray-200 bg-surface py-2.5 pl-9 text-sm text-gray-900 placeholder:text-gray-400 focus:border-primary-500 focus:ring-primary-500"
 			/>
 		</div>
 	{/if}
@@ -62,7 +62,7 @@
 			value={filter.value}
 			aria-label={filter.label}
 			onchange={submit}
-			class="w-full min-w-0 cursor-pointer rounded-lg border-gray-200 bg-white py-2.5 pl-3 pr-9 text-sm font-500 text-gray-700 focus:border-primary-500 focus:ring-primary-500"
+			class="w-full min-w-0 cursor-pointer rounded-lg border-gray-200 bg-surface py-2.5 pl-3 pr-9 text-sm font-500 text-gray-700 focus:border-primary-500 focus:ring-primary-500"
 		>
 			{#each filter.options as option (option.value)}
 				<option value={option.value}>{option.label}</option>
@@ -78,7 +78,7 @@
 				value={dateFrom}
 				aria-label="Filed from"
 				onchange={submit}
-				class="w-full min-w-0 rounded-lg border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-700 focus:border-primary-500 focus:ring-primary-500"
+				class="w-full min-w-0 rounded-lg border-gray-200 bg-surface px-3 py-2.5 text-sm text-gray-700 focus:border-primary-500 focus:ring-primary-500"
 			/>
 			<span class="shrink-0 text-sm text-gray-400">to</span>
 			<input
@@ -87,7 +87,7 @@
 				value={dateTo}
 				aria-label="Filed to"
 				onchange={submit}
-				class="w-full min-w-0 rounded-lg border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-700 focus:border-primary-500 focus:ring-primary-500"
+				class="w-full min-w-0 rounded-lg border-gray-200 bg-surface px-3 py-2.5 text-sm text-gray-700 focus:border-primary-500 focus:ring-primary-500"
 			/>
 		</div>
 	{/if}
@@ -101,7 +101,7 @@
 			value={sort}
 			aria-label="Sort"
 			onchange={submit}
-			class="w-full min-w-0 cursor-pointer rounded-lg border-gray-200 bg-white py-2.5 pl-9 pr-9 text-sm font-500 text-gray-700 focus:border-primary-500 focus:ring-primary-500"
+			class="w-full min-w-0 cursor-pointer rounded-lg border-gray-200 bg-surface py-2.5 pl-9 pr-9 text-sm font-500 text-gray-700 focus:border-primary-500 focus:ring-primary-500"
 		>
 			{#each sortOptions as option (option.value)}
 				<option value={option.value}>{option.label}</option>
