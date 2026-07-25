@@ -77,10 +77,37 @@
 
 html {
 	scroll-behavior: smooth;
+	/* Declared explicitly so native controls (notably the mobile date picker)
+	   follow the page theme rather than the operating system's. */
+	color-scheme: light;
 }
 
 html.dark {
 	color-scheme: dark;
+}
+
+/* Mobile browsers render date fields through their own shadow DOM, which does
+   not inherit the utility text colour. */
+input[type='date'] {
+	color: inherit;
+}
+
+input[type='date']::-webkit-datetime-edit,
+input[type='date']::-webkit-datetime-edit-fields-wrapper,
+input[type='date']::-webkit-datetime-edit-text,
+input[type='date']::-webkit-datetime-edit-month-field,
+input[type='date']::-webkit-datetime-edit-day-field,
+input[type='date']::-webkit-datetime-edit-year-field {
+	color: inherit;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+	cursor: pointer;
+	opacity: 0.55;
+}
+
+.dark input[type='date']::-webkit-calendar-picker-indicator {
+	filter: invert(1);
 }
 
 @keyframes progress-indeterminate {
