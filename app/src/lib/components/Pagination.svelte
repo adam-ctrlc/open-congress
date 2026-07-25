@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Fa from 'svelte-fa';
-	import { faArrowLeftLong, faArrowRightLong } from '$lib/icons';
+	import { faArrowLeftLong, faArrowRightLong, faArrowRightToBracket } from '$lib/icons';
 
 	let {
 		basePath,
@@ -87,4 +87,41 @@
 			</a>
 		{/if}
 	</nav>
+
+	<!-- Plain GET form: submitting navigates to ?page=N with no client-side code.
+	     Hidden fields carry the active search, sort and filters across the jump. -->
+	<form
+		method="GET"
+		action={basePath}
+		class="mt-3 flex flex-wrap items-center justify-center gap-2 text-sm text-gray-500"
+	>
+		{#each Object.entries(params) as [key, value] (key)}
+			{#if value}
+				<input type="hidden" name={key} value={value} />
+			{/if}
+		{/each}
+
+		<label class="flex items-center gap-2">
+			<span>Go to page</span>
+			<input
+				type="number"
+				name="page"
+				value={current}
+				min="1"
+				max={totalPages}
+				step="1"
+				inputmode="numeric"
+				aria-label="Page number, between 1 and {totalPages}"
+				class="h-9 w-20 rounded-lg border-gray-200 bg-surface px-2 text-center text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500"
+			/>
+		</label>
+		<span>of {totalPages}</span>
+		<button
+			type="submit"
+			class="flex h-9 cursor-pointer items-center gap-2 rounded-lg border border-gray-200 bg-surface px-3 text-sm font-600 text-gray-700 transition-colors hover:border-primary-300 hover:text-primary-700 dark:hover:text-primary-200"
+		>
+			<Fa icon={faArrowRightToBracket} class="text-xs" />
+			Go
+		</button>
+	</form>
 {/if}

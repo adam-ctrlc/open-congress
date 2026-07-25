@@ -18,6 +18,7 @@ export {
 	faArrowRight,
 	faArrowLeftLong,
 	faArrowRightLong,
+	faArrowRightToBracket,
 	faChevronRight,
 	faCalendarDays,
 	faLocationDot,
