@@ -87,6 +87,10 @@ All routes forward query parameters upstream, so filters like `congress`, `type`
 `author_id`, `date_from` / `date_to`, `search`, `sort` / `dir`, `limit` / `offset` work as
 documented by the upstream API.
 
+The frontend paginates with a 1-based `?page=` parameter and converts it to the upstream row
+`offset`. Page 1 is the bare URL and carries no parameter, so each page has a single canonical
+address. See `app/src/lib/congress/pagination.ts`.
+
 ## Contributing
 
 Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, project layout,

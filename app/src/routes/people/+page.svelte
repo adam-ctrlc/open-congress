@@ -67,7 +67,7 @@
 				basePath="/people"
 				params={{ q: data.q, sort: data.sort, type: data.type, congress: data.congress }}
 				limit={data.limit}
-				offset={data.offset}
+				page={data.page}
 				total={result.pagination?.total ?? result.people.length}
 			/>
 		{:else}

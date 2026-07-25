@@ -6,18 +6,18 @@
 		basePath,
 		params = {},
 		limit,
-		offset,
+		page,
 		total
 	}: {
 		basePath: string;
 		params?: Record<string, string | undefined>;
 		limit: number;
-		offset: number;
+		page: number;
 		total: number;
 	} = $props();
 
 	const totalPages = $derived(Math.max(1, Math.ceil(total / limit)));
-	const current = $derived(Math.floor(offset / limit) + 1);
+	const current = $derived(Math.min(Math.max(1, page), totalPages));
 
 	const items = $derived.by(() => {
 		const out: (number | 'gap')[] = [];
@@ -31,13 +31,13 @@
 		return out;
 	});
 
-	function pageUrl(page: number): string {
+	function pageUrl(target: number): string {
 		const search = new URLSearchParams();
 		for (const [key, value] of Object.entries(params)) {
 			if (value) search.set(key, value);
 		}
-		const nextOffset = (page - 1) * limit;
-		if (nextOffset > 0) search.set('offset', String(nextOffset));
+		// Page 1 is the canonical bare URL, so it carries no page parameter.
+		if (target > 1) search.set('page', String(target));
 		const query = search.toString();
 		return query ? `${basePath}?${query}` : basePath;
 	}

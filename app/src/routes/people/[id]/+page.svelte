@@ -173,7 +173,7 @@
 						basePath="/people/{person.id}"
 						params={{ q: data.q, sort: data.sort }}
 						limit={data.limit}
-						offset={data.offset}
+						page={data.page}
 						total={documents.pagination?.total ?? documents.data.length}
 					/>
 				{:else}

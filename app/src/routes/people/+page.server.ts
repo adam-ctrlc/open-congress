@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import { congress } from '$lib/server/congress';
 import { peopleSorts, resolveSort } from '$lib/congress/sort';
+import { readPage, toOffset } from '$lib/congress/pagination';
 
 const LIMIT = 24;
 
@@ -9,7 +10,8 @@ export const load: PageServerLoad = async ({ fetch, url }) => {
 	const type = url.searchParams.get('type') ?? '';
 	const congressFilter = url.searchParams.get('congress') ?? '';
 	const sort = url.searchParams.get('sort') ?? '';
-	const offset = Number(url.searchParams.get('offset') ?? '0') || 0;
+	const page = readPage(url);
+	const offset = toOffset(page, LIMIT);
 
 	const resolved = resolveSort(peopleSorts, sort);
 
@@ -31,5 +33,5 @@ export const load: PageServerLoad = async ({ fetch, url }) => {
 		.then((response) => response.data)
 		.catch(() => []);
 
-	return { q, type, congress: congressFilter, sort, limit: LIMIT, offset, result, congresses };
+	return { q, type, congress: congressFilter, sort, limit: LIMIT, page, result, congresses };
 };

@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import { congress } from '$lib/server/congress';
 import { documentSorts, resolveSort } from '$lib/congress/sort';
+import { readPage, toOffset } from '$lib/congress/pagination';
 
 const LIMIT = 20;
 
@@ -12,7 +13,8 @@ export const load: PageServerLoad = async ({ fetch, url }) => {
 	const dateFrom = url.searchParams.get('date_from') ?? '';
 	const dateTo = url.searchParams.get('date_to') ?? '';
 	const sort = url.searchParams.get('sort') ?? '';
-	const offset = Number(url.searchParams.get('offset') ?? '0') || 0;
+	const page = readPage(url);
+	const offset = toOffset(page, LIMIT);
 
 	const resolved = resolveSort(documentSorts, sort);
 
@@ -46,7 +48,7 @@ export const load: PageServerLoad = async ({ fetch, url }) => {
 		dateFrom,
 		dateTo,
 		limit: LIMIT,
-		offset,
+		page,
 		result,
 		congresses
 	};

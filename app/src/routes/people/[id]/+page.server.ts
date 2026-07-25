@@ -2,13 +2,15 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { congress } from '$lib/server/congress';
 import { documentSorts, resolveSort } from '$lib/congress/sort';
+import { readPage, toOffset } from '$lib/congress/pagination';
 
 const LIMIT = 20;
 
 export const load: PageServerLoad = async ({ fetch, params, url }) => {
 	const q = url.searchParams.get('q')?.trim() ?? '';
 	const sort = url.searchParams.get('sort') ?? '';
-	const offset = Number(url.searchParams.get('offset') ?? '0') || 0;
+	const page = readPage(url);
+	const offset = toOffset(page, LIMIT);
 
 	try {
 		const [person, groups] = await Promise.all([
@@ -36,7 +38,7 @@ export const load: PageServerLoad = async ({ fetch, params, url }) => {
 			q,
 			sort,
 			limit: LIMIT,
-			offset
+			page
 		};
 	} catch {
 		error(404, 'Legislator not found');

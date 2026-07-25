@@ -2,6 +2,9 @@
 name = "governance-api"
 version = "0.1.0"
 edition = "2024"
+# Two binaries exist (the local server and the Vercel entrypoint), so plain
+# `cargo run` needs to know which one is the default.
+default-run = "governance-api"
 
 [lib]
 name = "governance_api"

@@ -84,7 +84,7 @@
 					date_to: data.dateTo
 				}}
 				limit={data.limit}
-				offset={data.offset}
+				page={data.page}
 				total={result.pagination?.total ?? result.documents.length}
 			/>
 		{:else}

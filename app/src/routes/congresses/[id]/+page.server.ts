@@ -2,13 +2,15 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { congress } from '$lib/server/congress';
 import { documentSorts, resolveSort } from '$lib/congress/sort';
+import { readPage, toOffset } from '$lib/congress/pagination';
 
 const LIMIT = 20;
 
 export const load: PageServerLoad = async ({ fetch, params, url }) => {
 	const q = url.searchParams.get('q')?.trim() ?? '';
 	const sort = url.searchParams.get('sort') ?? '';
-	const offset = Number(url.searchParams.get('offset') ?? '0') || 0;
+	const page = readPage(url);
+	const offset = toOffset(page, LIMIT);
 
 	let detail;
 	try {
@@ -32,5 +34,5 @@ export const load: PageServerLoad = async ({ fetch, params, url }) => {
 		.then((response) => ({ data: response.data, pagination: response.pagination }))
 		.catch(() => ({ data: [], pagination: undefined }));
 
-	return { congress: detail.data, q, sort, offset, limit: LIMIT, documents };
+	return { congress: detail.data, q, sort, page, limit: LIMIT, documents };
 };
