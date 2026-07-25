@@ -72,23 +72,42 @@
 
 	{#if dateFrom !== null && dateTo !== null}
 		<div class="flex min-w-0 items-center gap-2 sm:col-span-2">
-			<input
-				type="date"
-				name="date_from"
-				value={dateFrom}
-				aria-label="Filed from"
-				onchange={submit}
-				class="w-full min-w-0 rounded-lg border-gray-200 bg-surface px-3 py-2.5 text-sm text-gray-700 focus:border-primary-500 focus:ring-primary-500"
-			/>
+			<span class="shrink-0 text-sm text-gray-500">Filed</span>
+			<label class="relative min-w-0 flex-1">
+				<span class="sr-only">Filed from</span>
+				{#if !dateFrom}
+					<span
+						class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-sm text-gray-400 sm:hidden"
+					>
+						From
+					</span>
+				{/if}
+				<input
+					type="date"
+					name="date_from"
+					value={dateFrom}
+					onchange={submit}
+					class="w-full min-w-0 rounded-lg border-gray-200 bg-surface px-3 py-2.5 text-sm text-gray-700 focus:border-primary-500 focus:ring-primary-500"
+				/>
+			</label>
 			<span class="shrink-0 text-sm text-gray-400">to</span>
-			<input
-				type="date"
-				name="date_to"
-				value={dateTo}
-				aria-label="Filed to"
-				onchange={submit}
-				class="w-full min-w-0 rounded-lg border-gray-200 bg-surface px-3 py-2.5 text-sm text-gray-700 focus:border-primary-500 focus:ring-primary-500"
-			/>
+			<label class="relative min-w-0 flex-1">
+				<span class="sr-only">Filed to</span>
+				{#if !dateTo}
+					<span
+						class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-sm text-gray-400 sm:hidden"
+					>
+						To
+					</span>
+				{/if}
+				<input
+					type="date"
+					name="date_to"
+					value={dateTo}
+					onchange={submit}
+					class="w-full min-w-0 rounded-lg border-gray-200 bg-surface px-3 py-2.5 text-sm text-gray-700 focus:border-primary-500 focus:ring-primary-500"
+				/>
+			</label>
 		</div>
 	{/if}
 
